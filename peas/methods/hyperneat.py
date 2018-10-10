@@ -83,7 +83,7 @@ class Substrate(object):
             to use for the weight.
         """
         conns = product( self.layers[from_layer], self.layers[to_layer] )
-        conns = filter(lambda (fr, to): np.all(np.abs(self.nodes[fr] - self.nodes[to]) <=  max_length), conns)
+        conns = filter(lambda from_to: np.all(np.abs(self.nodes[from_to[0]] - self.nodes[from_to[1]]) <=  max_length), conns)
         self.connections.extend(conns)
         self.connection_ids.extend([connection_id] * len(conns))
         self.linkexpression_ids.extend([link_expression_id] * len(conns))
@@ -118,7 +118,7 @@ class HyperNEATDeveloper(object):
                  min_weight=0.3,
                  activation_steps=10,
                  node_type='tanh'):
-        """ Constructor 
+        """ Constructor b
 
             :param substrate:      A substrate object
             :param weight_range:   (min, max) of substrate weights
