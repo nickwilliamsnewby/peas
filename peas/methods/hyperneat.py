@@ -3,7 +3,8 @@
 """
 
 ### IMPORTS ###
-from itertools import product, zip
+from itertools import product
+
 
 # Libs
 import numpy as np
