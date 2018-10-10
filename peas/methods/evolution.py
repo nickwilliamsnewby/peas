@@ -24,7 +24,7 @@ inf  = float('inf')
 
 ### FUNCTIONS ###
 
-def evaluate_individual((individual, evaluator)):
+def evaluate_individual(individual, evaluator):
     if callable(evaluator):
         individual.stats = evaluator(individual)
     elif hasattr(evaluator, 'evaluate'):
@@ -129,10 +129,10 @@ class SimplePopulation(object):
         """
         to_eval = [(individual, evaluator) for individual in pop]
         if self.pool is not None:
-            print "Running in %d processes." % self.pool._processes
+            print( "Running in %d processes." % self.pool._processes)
             pop = self.pool.map(evaluate_individual, to_eval)
         else:
-            print "Running in single process."
+            print( "Running in single process.")
             pop = map(evaluate_individual, to_eval)
         
         return pop
@@ -186,8 +186,8 @@ class SimplePopulation(object):
         self.stats['solved'].append( self.solved_at is not None )
         
     def _status_report(self):
-        """ Prints a status report """
-        print "\n== Generation %d ==" % self.generation
-        print "Best (%.2f): %s %s" % (self.champions[-1].stats['fitness'], self.champions[-1], self.champions[-1].stats)
-        print "Solved: %s" % (self.solved_at)
+        """ print(s a status report """
+        print( "\n== Generation %d ==" % self.generation)
+        print( "Best (%.2f): %s %s" % (self.champions[-1].stats['fitness'], self.champions[-1], self.champions[-1].stats))
+        print( "Solved: %s" % (self.solved_at))
         

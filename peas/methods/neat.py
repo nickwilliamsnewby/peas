@@ -298,7 +298,7 @@ class NEATGenotype(object):
                 child.conn_genes[(cg[1], cg[2])][4] = enabled or rand() < self.prob_reenable_parent
 
         # Filter out connections that would become recursive in the new individual.
-        def is_feedforward(((fr, to), cg)):
+        def is_feedforward(self, fr, to):
             return child.node_genes[fr][0] < child.node_genes[to][0]
 
         if self.feedforward:
@@ -378,9 +378,9 @@ class NEATGenotype(object):
             import pprint
             pprint.pprint(self.node_genes)
             pprint.pprint(self.conn_genes)
-            print ff
-            print order
-            print np.sign(cm)
+            print( ff )
+            print( order )
+            print( np.sign(cm) )
             raise Exception("Network is not feedforward.")
         
         return cm, node_types
@@ -580,12 +580,12 @@ class NEATPopulation(SimplePopulation):
         self._gather_stats(pop)
         
     def _status_report(self):
-        """ Print a status report """
-        """ Prints a status report """
-        print "\n== Generation %d ==" % self.generation
-        print "Best (%.2f): %s %s" % (self.champions[-1].stats['fitness'], self.champions[-1], self.champions[-1].stats)
-        print "Solved: %s" % (self.solved_at)
-        print "Species: %s" % ([len(s.members) for s in self.species]) 
-        print "Age: %s" % ([s.age for s in self.species])
-        print "No improvement: %s" % ([s.no_improvement_age for s in self.species])
+        """ print( a status report """
+        """ print(s a status report """
+        print( "\n== Generation %d ==" % self.generation)
+        print( "Best (%.2f): %s %s" % (self.champions[-1].stats['fitness'], self.champions[-1], self.champions[-1].stats))
+        print( "Solved: %s" % (self.solved_at))
+        print( "Species: %s" % ([len(s.members) for s in self.species]) )
+        print( "Age: %s" % ([s.age for s in self.species]))
+        print( "No improvement: %s" % ([s.no_improvement_age for s in self.species]))
         
