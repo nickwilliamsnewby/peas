@@ -3,7 +3,7 @@
 """
 
 ### IMPORTS ###
-from itertools import product, izip
+from itertools import product, zip
 
 # Libs
 import numpy as np
@@ -95,7 +95,7 @@ class Substrate(object):
         if not hasattr(self, '_connection_list'):
             
             self._connection_list = []
-            for ((i, j), conn_id, expr_id) in izip(self.connections, self.connection_ids, self.linkexpression_ids):
+            for ((i, j), conn_id, expr_id) in zip(self.connections, self.connection_ids, self.linkexpression_ids):
                 fr = self.nodes[i]
                 to = self.nodes[j]
                 if add_deltas:
