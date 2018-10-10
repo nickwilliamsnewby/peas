@@ -266,7 +266,7 @@ class NeuralNetwork(object):
             return act.reshape(self.original_shape)
 
     def cm_string(self):
-        print "Connectivity matrix: %s" % (self.cm.shape,)
+        print("Connectivity matrix: %s" % (self.cm.shape,))
         cp = self.cm.copy()
         s = np.empty(cp.shape, dtype='a1')
         s[cp == 0] = ' '
@@ -329,6 +329,6 @@ if __name__ == '__main__':
     # import doctest
     # doctest.testmod(optionflags=doctest.ELLIPSIS)
     a = NeuralNetwork().from_matrix(np.array([[0,0,0],[0,0,0],[1,1,0]]))
-    print a.cm_string()
-    print a.feed(np.array([1,1]), add_bias=False)
+    print(a.cm_string())
+    print(a.feed(np.array([1,1]), add_bias=False))
     
