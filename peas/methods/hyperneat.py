@@ -52,7 +52,7 @@ class Substrate(object):
             # Create coordinate grids
             newnodes = np.mgrid[[slice(-1, 1, s*1j) for s in nodes_or_shape]]
             # Move coordinates to last dimension
-            newnodes = newnodes.transpose(range(1,len(nodes_or_shape)+1) + [0])
+            newnodes = newnodes.transpose(list(range(1,len(nodes_or_shape)+1)) + [0])
             # Reshape to a N x nD list.
             newnodes = newnodes.reshape(-1, len(nodes_or_shape))
             self.dimensions = len(nodes_or_shape)
@@ -86,7 +86,7 @@ class Substrate(object):
         conns = product( self.layers[from_layer], self.layers[to_layer] )
         conns = filter(lambda from_to: np.all(np.abs(self.nodes[from_to[0]] - self.nodes[from_to[1]]) <=  max_length), conns)
         self.connections.extend(conns)
-        self.connection_ids.extend([connection_id] * len(conns))
+        self.connection_ids.extend([connection_id] * len(list(conns)))
         self.linkexpression_ids.extend([link_expression_id] * len(conns))
         
     def get_connection_list(self, add_deltas):
