@@ -87,7 +87,7 @@ class Substrate(object):
         conns = filter(lambda from_to: np.all(np.abs(self.nodes[from_to[0]] - self.nodes[from_to[1]]) <=  max_length), conns)
         self.connections.extend(conns)
         self.connection_ids.extend([connection_id] * len(list(conns)))
-        self.linkexpression_ids.extend([link_expression_id] * len(conns))
+        self.linkexpression_ids.extend([link_expression_id] * len(list(conns)))
         
     def get_connection_list(self, add_deltas):
         """ Builds the connection list only once. 

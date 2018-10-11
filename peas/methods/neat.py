@@ -106,7 +106,7 @@ class NEATGenotype(object):
         if self.bias_as_node:
             self.inputs += 1
             
-        max_layer = sys.maxint if (self.max_depth is None) else (self.max_depth - 1)
+        max_layer = sys.maxsize if (self.max_depth is None) else (self.max_depth - 1)
         
         if topology is None:
             # The default method of creating a genotype
@@ -115,20 +115,20 @@ class NEATGenotype(object):
             # to the output node.
             
             # Create input nodes
-            for i in xrange(self.inputs):
+            for i in range(self.inputs):
                 # We set the 'response' to 4.924273. Stanley doesn't mention having the response
                 # be subject to evolution, so this is #weird, but we'll do it because neat-python does.
                 self.node_genes.append( [i * 1024.0, types[0], 0.0, self.response_default, 0] )
             
             # Create output nodes
-            for i in xrange(self.outputs):
+            for i in range(self.outputs):
                 self.node_genes.append( [(self.inputs + i) * 1024.0, random.choice(self.types), 
                                             0.0, self.response_default, max_layer] )
             
             # Create connections from each input to each output
             innov = 0
-            for i in xrange(self.inputs):
-                for j in xrange(self.inputs, self.inputs + self.outputs):
+            for i in range(self.inputs):
+                for j in range(self.inputs, self.inputs + self.outputs):
                     self.conn_genes[(i, j)] = [innov, i, j, np.random.normal(0.0, self.initial_weight_stdev), True]
                     innov += 1
         else:

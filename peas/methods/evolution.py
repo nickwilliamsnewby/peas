@@ -84,7 +84,7 @@ class SimplePopulation(object):
         if reset:
             self._reset()
         
-        for _ in xrange(generations):
+        for _ in range(generations):
             self._evolve(evaluator, solution)
 
             self.generation += 1
