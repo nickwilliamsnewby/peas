@@ -49,7 +49,7 @@ def run(method, splits, generations=500, popsize=500):
     
     if complexity in ['half', 'flat', 'slope']:
         funcs.append((True, np.random.random() * 6. - 3))        
-     b
+        
     for num in range(splits):
         axis = random_direction_vector()
         offset = np.random.random() - 0.2
